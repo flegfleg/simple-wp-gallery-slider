@@ -3,7 +3,7 @@
  * Plugin Name: Simple Worpress Gallery Slider
  * Version: 1.1
  * Plugin URI: https://github.com/flegfleg/simple-wp-gallery-slider/
- * Description: Turns all wordpress gallerys into sliders.
+ * Description: Turns all wordpress galleries into sliders.
  * Author: Florian Egermann
  * Author URI: http://www.fleg.de/
  * License: GPL3
