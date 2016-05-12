@@ -102,12 +102,6 @@ function slider_defaults() {
  * * * * * * * * * * * * * *
  */
 
-add_action('plugins_loaded', 'sgs_textdomain');
-
-function swpgs_textdomain() {
-    load_plugin_textdomain( 'simple-wp-gallery-slider', false, dirname( plugin_basename(__FILE__) ) . '/lang/' );
-}
-
   function get_slider_defaults() {
     return $slider_defaults;
   }
@@ -156,13 +150,12 @@ function swpgs_gallery( $string, $attr ){
 
       foreach( $attachment_list as $attachment ){
 
-        $image = wp_get_attachment_image_src($attachment->ID, 'large'); 
+        $image = wp_get_attachment_image_src($attachment->ID, array( 1024, 512)); 
 
         $orientation = ($image[1] > $image[2] ? 'landscape' : 'portrait'); 
         $output .= '<li class="gallery-item '. $orientation . '">';
-        $output .= '<img src="' . wp_get_attachment_image_src($attachment->ID, array( 1024, 512))[0].'" width="' . $image[1] . '" height="' . $image[2] . '" title="' . $attachment->post_title . '">';
+        $output .= '<img src="' . $image[0].'" width="' . $image[1] . '" height="' . $image[2] . '" title="' . $attachment->post_title . '">';
         $output .= '</li>';
-        $i ++;
       }
     $output .= "</ul>";
     return $output;
