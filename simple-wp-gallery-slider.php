@@ -172,7 +172,7 @@ function merge_defaults( $args ) {
   $allowed_args = array_intersect_key ( $args, $def );
 
   foreach ($allowed_args as $key => $value) {
-    if ( $value == "false" ) { $value = (bool) false; } // arguments from wp_localize are strings. convert them to booleans. see: http://wordpress.stackexchange.com/questions/186155/how-do-you-pass-a-boolean-value-to-wp-localize-script/186191#186191
+    if ( $value == "true" ) { $value = (bool) true; } elseif ( $value == "false" ) { $value = (bool) false; } // arguments from wp_localize are strings. convert them to booleans. see: http://wordpress.stackexchange.com/questions/186155/how-do-you-pass-a-boolean-value-to-wp-localize-script/186191#186191
     $def[$key] = $value;
   }
   // var_dump( $GLOBALS['counter'] );
