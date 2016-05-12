@@ -147,7 +147,9 @@ function swpgs_gallery( $string, $attr ){
     wp_localize_script( 'swpgs_start', 'slider_' . $GLOBALS['counter'] . '_args', $js_args );
 
     $output = '<ul class="swpgs-slider" id="slider_' . $GLOBALS['counter'] .'">';
-    $attachment_list = get_posts(array('include' => $attr['ids'],'post_type' => 'attachment' ));
+    
+    $attachment_list = get_posts( array('include' => $attr['ids'], 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => 'ASC', 'orderby' => 'post__in') );
+
 
       foreach( $attachment_list as $attachment ){
 
