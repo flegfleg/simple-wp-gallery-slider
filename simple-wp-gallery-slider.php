@@ -3,7 +3,7 @@
  * Plugin Name: Simple Worpress Gallery Slider
  * Version: 1.1
  * Plugin URI: https://github.com/flegfleg/simple-wp-gallery-slider/
- * Description: Turns all wordpress galleries into sliders.
+ * Description: Turns all wordpress galleries into sliders via bxslider
  * Author: Florian Egermann
  * Author URI: http://www.fleg.de/
  * License: GPL3
@@ -39,7 +39,7 @@ function slider_defaults() {
     'slideMargin'=> 0,
     'startSlide'=> 0,
     'randomStart'=> false,
-    'captions'=> false,
+    'captions'=> true,
     'ticker'=> false,
     'tickerHover'=> false,
     'adaptiveHeight'=> false,
