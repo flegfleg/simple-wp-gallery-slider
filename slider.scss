@@ -1,7 +1,7 @@
 /** VARIABLES 
 ===================================*/
-@controls: 'images/controls.png';
-@loader:   'images/bx_loader.gif';
+$controls: 'images/controls.png';
+$loader:   'images/bx_loader.gif';
 
 /** RESET AND LAYOUT
 ===================================*/
@@ -53,7 +53,7 @@ ul.bxslider {
 /* LOADER */
 .bx-wrapper .bx-loading {
 	min-height: 50px;
-	background: url(@loader) center center no-repeat #fff;
+	background: url($loader) center center no-repeat #fff;
 	height: 100%;
 	width: 100%;
 	position: absolute;
@@ -105,7 +105,7 @@ ul.bxslider {
 .bx-wrapper {
 	.bx-prev {
 		left: 10px;
-		background: url(@controls) no-repeat 0 -32px;
+		background: url($controls) no-repeat 0 -32px;
 		&:hover,
 		&:focus {
 			background-position: 0 0;
@@ -113,7 +113,7 @@ ul.bxslider {
 	}
 	.bx-next {
 		right: 10px;
-		background: url(@controls) no-repeat -43px -32px;
+		background: url($controls) no-repeat -43px -32px;
 		&:hover,
 		&:focus {
 			background-position: -43px 0;
@@ -143,7 +143,7 @@ ul.bxslider {
 		width: 10px;
 		height: 11px;
 		outline: 0;
-		background: url(@controls) -86px -11px no-repeat;
+		background: url($controls) -86px -11px no-repeat;
 		margin: 0 3px;
 		&:hover,
 		&.active,
@@ -157,7 +157,7 @@ ul.bxslider {
 		width: 9px;
 		height: 11px;
 		outline: 0;
-		background: url(@controls) -86px -44px no-repeat;
+		background: url($controls) -86px -44px no-repeat;
 		margin: 0 3px;
 		&:hover,
 		&.active,
