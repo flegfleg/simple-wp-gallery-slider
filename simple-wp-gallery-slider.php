@@ -141,23 +141,30 @@ function swpgs_gallery( $string, $attr ){
   } else {
 
     $js_args = merge_defaults( $attr );
-    wp_localize_script( 'swpgs_start', 'slider_' . $GLOBALS['counter'] . '_args', $js_args );
-
-    $output = '<ul class="swpgs-slider" id="slider_' . $GLOBALS['counter'] .'">';
     
-    $attachment_list = get_posts( array('include' => $attr['ids'], 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => 'ASC', 'orderby' => 'post__in') );
+    if ( !empty ( $attr['ids']) ) { // Post has gallery images defined
+
+      wp_localize_script( 'swpgs_start', 'slider_' . $GLOBALS['counter'] . '_args', $js_args );
+
+      $output = '<ul class="swpgs-slider" id="slider_' . $GLOBALS['counter'] .'">';
+      
+      $attachment_list = get_posts( array('include' => $attr['ids'], 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => 'ASC', 'orderby' => 'post__in') );
 
 
-      foreach( $attachment_list as $attachment ){
+        foreach( $attachment_list as $attachment ){
 
-        $image = wp_get_attachment_image_src($attachment->ID, array( 1024, 512)); 
+          $image = wp_get_attachment_image_src($attachment->ID, array( 1024, 512)); 
 
-        $orientation = ($image[1] > $image[2] ? 'landscape' : 'portrait'); 
-        $output .= '<li class="gallery-item '. $orientation . '">';
-        $output .= '<img src="' . $image[0].'" width="' . $image[1] . '" height="' . $image[2] . '" title="' . $attachment->post_title . '">';
-        $output .= '</li>';
-      }
-    $output .= "</ul>";
+          $orientation = ($image[1] > $image[2] ? 'landscape' : 'portrait'); 
+          $output .= '<li class="gallery-item '. $orientation . '">';
+          $output .= '<img src="' . $image[0].'" width="' . $image[1] . '" height="' . $image[2] . '" title="' . $attachment->post_title . '">';
+          $output .= '</li>';
+        }
+      $output .= "</ul>";
+
+    } else { 
+      $output = __( 'No images found', 'swpgs'); 
+    }
     return $output;
   }
 }
@@ -165,16 +172,18 @@ function swpgs_gallery( $string, $attr ){
 function merge_defaults( $args ) {
   $def = slider_defaults();
 
-  $allowed_args = array_intersect_key ( $args, $def );
+  if ( is_array( $args ) ) {
+    $allowed_args = array_intersect_key ( $args, $def );
 
-  foreach ($allowed_args as $key => $value) {
-    if ( $value == "true" ) { $value = (bool) true; } elseif ( $value == "false" ) { $value = (bool) false; } // arguments from wp_localize are strings. convert them to booleans. see: http://wordpress.stackexchange.com/questions/186155/how-do-you-pass-a-boolean-value-to-wp-localize-script/186191#186191
-    $def[$key] = $value;
+    foreach ($allowed_args as $key => $value) {
+      if ( $value == "true" ) { $value = (bool) true; } elseif ( $value == "false" ) { $value = (bool) false; } // arguments from wp_localize are strings. convert them to booleans. see: http://wordpress.stackexchange.com/questions/186155/how-do-you-pass-a-boolean-value-to-wp-localize-script/186191#186191
+      $def[$key] = $value;
+    }
+    // var_dump( $GLOBALS['counter'] );
+    // $arguments[ $GLOBALS['counter'] ] = $def ;
+    // // var_dump( $def );
+    $GLOBALS['counter'] ++;
   }
-  // var_dump( $GLOBALS['counter'] );
-  // $arguments[ $GLOBALS['counter'] ] = $def ;
-  // // var_dump( $def );
-  $GLOBALS['counter'] ++;
   return array( $def ); 
 }
 
