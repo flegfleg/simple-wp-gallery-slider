@@ -114,7 +114,7 @@ function slider_defaults() {
 function swpgs_scripts_styles() {
   // liquidslider library
   wp_enqueue_script( 'bxslider-js', plugins_url() . '/simple-wp-gallery-slider/vendor/jquery.bxslider/jquery.bxslider.min.js', array( 'jquery' ), '', true );
-  wp_enqueue_style( 'bxslider-css', plugins_url() . '/simple-wp-gallery-slider/slider.css', array(), '' );
+  wp_enqueue_style( 'bxslider-css', plugins_url() . '/simple-wp-gallery-slider/assets/slider.css', array(), '' );
   // start the slider
   wp_enqueue_script( 'swpgs_start', plugins_url() . '/simple-wp-gallery-slider/slider.js', array('jquery'), '', true );
 

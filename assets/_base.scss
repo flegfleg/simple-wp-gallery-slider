@@ -1,0 +1,29 @@
+/** RESET AND LAYOUT
+===================================*/
+
+.bx-wrapper {
+	position: relative;
+	margin: 0 auto 60px;
+	padding: 0;
+	*zoom: 1;
+	-ms-touch-action: pan-y;
+	touch-action: pan-y;
+	img {
+		max-width: 100%;
+		display: block;
+	}
+}
+
+.bxslider {
+	margin: 0;
+	padding: 0;
+}
+
+ul.bxslider {
+	list-style: none;
+}
+
+.bx-viewport {
+	/*fix other elements on the page moving (on Chrome)*/
+	-webkit-transform: translatez(0);
+}
