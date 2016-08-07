@@ -64,6 +64,7 @@
 
 /* DIRECTION CONTROLS (NEXT / PREV) */  
 .bx-wrapper {
+  padding: 0;
   .bx-prev, .bx-next {
     overflow: hidden; 
     &:before {
@@ -90,6 +91,7 @@
     top: 50%;
     margin-top: -16px;
     outline: 0;
+    color: $color-control;
     width: $control-size-x;
     height: $control-size-y;
     z-index: 9999;
@@ -97,7 +99,7 @@
     border: none !important;
     &:hover
     {
-    color: yellow !important;
+      opacity: 0.8;
     }
     &.disabled {
       display: none;
@@ -157,11 +159,10 @@
   position: absolute;
   bottom: 0;
   left: 0;
-  background: #666;
-  background: rgba(80, 80, 80, 0.75);
+  @include background-opacity($color-caption-bg, 0.5);
   width: 100%;
   span {
-    color: #fff;
+    color: $color-caption-text;
     display: block;
     font-size: .85em;
     padding: 10px;

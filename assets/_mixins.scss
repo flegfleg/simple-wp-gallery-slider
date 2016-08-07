@@ -4,3 +4,8 @@
       -ms-mask-image: $url;
           mask-image: $url;
 }
+
+@mixin background-opacity($color, $opacity: 0.3) {
+    background: $color; /* The Fallback */
+    background: rgba($color, $opacity);
+}
