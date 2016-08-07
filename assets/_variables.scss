@@ -4,7 +4,10 @@
 
 /* Images */
 $controls:          'images/controls.png';
-$loader:            'images/bx_loader.gif';
+$loader:            '../images/bx_loader.gif';
+
+$control-size-y:	48px;
+$control-size-x:	32px;
 
 /* Padding */
 $padding:           5px; 

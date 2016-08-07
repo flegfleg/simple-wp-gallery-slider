@@ -3,6 +3,7 @@
 
 .bx-wrapper {
   background: #fff;
+  margin-bottom: 50px;
   .bx-pager,
   .bx-controls-auto {
     position: absolute;
@@ -28,10 +29,9 @@
   .bx-pager {
     text-align: center;
     font-size: .85em;
-    font-family: Arial;
     font-weight: bold;
     color: #666;
-    padding-top: 20px;
+    padding-top: 0px;
     &.bx-default-pager a {
       background: #666;
       text-indent: -9999px;
@@ -64,20 +64,25 @@
 
 /* DIRECTION CONTROLS (NEXT / PREV) */  
 .bx-wrapper {
+  .bx-prev, .bx-next {
+    overflow: hidden; 
+    &:before {
+      font-family: 'icomoon';
+      font-size: $control-size-y;
+      line-height: $control-size-y;
+    }
+  }
+
   .bx-prev {
     left: 10px;
-    background: url($controls) no-repeat 0 -32px;
-    &:hover,
-    &:focus {
-      background-position: 0 0;
+    &:before {     
+        @extend .icon-chevron-left;
     }
   }
   .bx-next {
     right: 10px;
-    background: url($controls) no-repeat -43px -32px;
-    &:hover,
-    &:focus {
-      background-position: -43px 0;
+    &:before {     
+        @extend .icon-chevron-right;
     }
   }
   .bx-controls-direction a {
@@ -85,10 +90,15 @@
     top: 50%;
     margin-top: -16px;
     outline: 0;
-    width: 32px;
-    height: 32px;
-    text-indent: -9999px;
+    width: $control-size-x;
+    height: $control-size-y;
     z-index: 9999;
+    text-decoration: none !important;
+    border: none !important;
+    &:hover
+    {
+    color: yellow !important;
+    }
     &.disabled {
       display: none;
     }
@@ -152,7 +162,6 @@
   width: 100%;
   span {
     color: #fff;
-    font-family: Arial;
     display: block;
     font-size: .85em;
     padding: 10px;

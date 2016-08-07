@@ -1,0 +1,6 @@
+@mixin mask-image( $url ) {
+  -webkit-mask-image: $url;
+     -moz-mask-image: $url;
+      -ms-mask-image: $url;
+          mask-image: $url;
+}

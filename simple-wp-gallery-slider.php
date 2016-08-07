@@ -42,7 +42,7 @@ function slider_defaults() {
     'captions'=> true,
     'ticker'=> false,
     'tickerHover'=> false,
-    'adaptiveHeight'=> false,
+    'adaptiveHeight'=> true,
     'adaptiveHeightSpeed'=> 500,
     'video'=> false,
     'useCSS'=> true,
@@ -79,11 +79,11 @@ function slider_defaults() {
     'autoControlsSelector'=> null,
 
     // AUTO
-    'auto'=> false,
+    'auto'=> true,
     'pause'=> 4000,
     'autoStart'=> true,
     'autoDirection'=> 'next',
-    'autoHover'=> false,
+    'autoHover'=> true,
     'autoDelay'=> 0,
     'autoSlideForOnePage'=> false,
 
@@ -150,14 +150,13 @@ function swpgs_gallery( $string, $attr ){
       
       $attachment_list = get_posts( array('include' => $attr['ids'], 'post_status' => 'inherit', 'post_type' => 'attachment', 'post_mime_type' => 'image', 'order' => 'ASC', 'orderby' => 'post__in') );
 
-
         foreach( $attachment_list as $attachment ){
 
           $image = wp_get_attachment_image_src($attachment->ID, array( 1024, 512)); 
 
           $orientation = ($image[1] > $image[2] ? 'landscape' : 'portrait'); 
           $output .= '<li class="gallery-item '. $orientation . '">';
-          $output .= '<img src="' . $image[0].'" width="' . $image[1] . '" height="' . $image[2] . '" title="' . $attachment->post_title . '">';
+          $output .= '<img src="' . $image[0].'" width="' . $image[1] . '"  ght="' . $image[2] . '" title="' . $attachment->post_title . '">';
           $output .= '</li>';
         }
       $output .= "</ul>";
