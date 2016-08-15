@@ -3,7 +3,7 @@
  * Plugin Name: Simple Worpress Gallery Slider
  * Version: 1.1
  * Plugin URI: https://github.com/flegfleg/simple-wp-gallery-slider/
- * Description: Turns all wordpress galleries into sliders via bxslider
+ * Description: Turns all wordpress galleries automatically into sliders via bxslider
  * Author: Florian Egermann
  * Author URI: http://www.fleg.de/
  * License: GPL3
@@ -42,7 +42,7 @@ function slider_defaults() {
     'captions'=> true,
     'ticker'=> false,
     'tickerHover'=> false,
-    'adaptiveHeight'=> true,
+    'adaptiveHeight'=> false,
     'adaptiveHeightSpeed'=> 500,
     'video'=> false,
     'useCSS'=> true,
@@ -175,12 +175,10 @@ function merge_defaults( $args ) {
     $allowed_args = array_intersect_key ( $args, $def );
 
     foreach ($allowed_args as $key => $value) {
-      if ( $value == "true" ) { $value = (bool) true; } elseif ( $value == "false" ) { $value = (bool) false; } // arguments from wp_localize are strings. convert them to booleans. see: http://wordpress.stackexchange.com/questions/186155/how-do-you-pass-a-boolean-value-to-wp-localize-script/186191#186191
+      if ( $value == "true" ) { $value = (bool) true; } elseif ( $value == "false" ) { $value = (bool) false; } 
       $def[$key] = $value;
     }
-    // var_dump( $GLOBALS['counter'] );
-    // $arguments[ $GLOBALS['counter'] ] = $def ;
-    // // var_dump( $def );
+
     $GLOBALS['counter'] ++;
   }
   return array( $def ); 
