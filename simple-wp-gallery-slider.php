@@ -156,7 +156,7 @@ function swpgs_gallery( $string, $attr ){
 
           $orientation = ($image[1] > $image[2] ? 'landscape' : 'portrait'); 
           $output .= '<li class="gallery-item '. $orientation . '">';
-          $output .= '<img src="' . $image[0].'" width="' . $image[1] . '"  height="' . $image[2] . '" title="' . $attachment->post_title . '">';
+          $output .= '<img src="' . $image[0].'" width="' . $image[1] . '"  height="' . $image[2] . '" title="' . $attachment->post_excerpt . '">';
           $output .= '</li>';
         }
       $output .= "</ul>";
